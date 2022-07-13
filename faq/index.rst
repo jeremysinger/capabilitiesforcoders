@@ -10,5 +10,7 @@ when working with CHERI software?
    :maxdepth: 2
 
    compiling
+   header
    running
    printf
+   tagcheck

@@ -15,8 +15,8 @@ invoke the cross-compiler is by defining appropriate environment variables:
 
 .. code-block:: bash
 
-   export CC=~/cheri/...
-   export CFLAGS=~/...
+   export CC=~/cheri/output/morello-sdk/bin/clang
+   export CFLAGS="--config cheribsd-morello-purecap.cfg"
 
 You can then invoke the cross-compiler on your non-CHERI platform:
 
@@ -38,6 +38,11 @@ Native compilation
 
 If you have access to Morello hardware, you can run the LLVM compiler natively
 on CheriBSD. You need to install llvm with pkg, then you can run it as you would on any other platform.
+
+.. code-block:: bash
+
+   # pkg install llvm-cheri
+
 
 
 Which compiler?
