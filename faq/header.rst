@@ -11,6 +11,9 @@ In general, CHERI API functions start with the ``cheri_`` prefix.
    :emphasize-lines: 1
 
    #include <cheriintrin.h>
+   #include <stdio.h>
+   #include <stdlib.h>
+
    int main() {
      void *x = (void *)malloc(1);
      printf("The bounds of this capability are %d\n",
