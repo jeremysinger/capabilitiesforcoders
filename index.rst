@@ -7,9 +7,6 @@
 Capabilities for Coders
 ======================================
 
-.. image:: gfx/cherry_bakewell.jpg
-  :width: 300
-  :alt: Cherry Bakewell cake photo
 
 .. toctree::
    :maxdepth: 2
