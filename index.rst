@@ -19,6 +19,13 @@ Capabilities for Coders
    faq/index
 
 
+YouTube playlist
+================
+
+.. raw:: html
+	 
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLilv37aq2fhSgAtn6qjdv43qocxwiVrMD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   
 Search docs
 ==================
 
