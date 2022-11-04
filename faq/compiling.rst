@@ -41,7 +41,17 @@ on CheriBSD. You need to install llvm with pkg, then you can run it as you would
 
 .. code-block:: bash
 
-   # pkg install llvm-cheri
+   # pkg64 install llvm-morello
+
+Then you can invoke the clang compiler to compile c programs
+to purecap binaries like this:
+
+.. code-block:: bash
+
+   # clang-morello -march=morello+c64 -mabi=purecap ./file.c
+
+You need to specify both the march and mabi flags explicitly for
+purecap mode.
 
 
 
