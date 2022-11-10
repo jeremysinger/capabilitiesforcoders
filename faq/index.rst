@@ -11,6 +11,7 @@ when working with CHERI software?
 
    compiling
    header
+   installing_gdb
    running
    printf
    tagcheck
