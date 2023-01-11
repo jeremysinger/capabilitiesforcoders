@@ -10,6 +10,7 @@ when working with CHERI software?
    :maxdepth: 2
 
    compiling
+   hardware_performance_counters
    header
    installing_gdb
    running
