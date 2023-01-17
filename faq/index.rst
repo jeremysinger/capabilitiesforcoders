@@ -13,6 +13,7 @@ when working with CHERI software?
    hardware_performance_counters
    header
    installing_gdb
-   running
    printf
+   running
+   shared_library_path
    tagcheck
