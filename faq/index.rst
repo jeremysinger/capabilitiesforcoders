@@ -9,6 +9,7 @@ when working with CHERI software?
 .. toctree::
    :maxdepth: 2
 
+   get_a_board
    compiling
    hardware_performance_counters
    header
