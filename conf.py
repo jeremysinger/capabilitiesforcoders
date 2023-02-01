@@ -18,7 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Capabilities for Coders'
-copyright = '2022, Jeremy Singer'
+copyright = '2023, Jeremy Singer'
 author = 'Jeremy Singer'
 
 
