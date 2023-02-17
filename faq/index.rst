@@ -17,4 +17,5 @@ when working with CHERI software?
    printf
    running
    shared_library_path
+   ldpreload
    tagcheck
