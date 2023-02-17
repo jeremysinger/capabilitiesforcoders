@@ -31,7 +31,7 @@ or for C shell:
    setenv LD_PRELOAD /path/to/customlib.so
    /run/my/binary
    # or for hybrid code ...
-   setenv LD_64_PRELOAD /path/to/shared/object/files
+   setenv LD_64_PRELOAD /path/to/customlib.so
 
 Note you can use the `ldd` command with a binary
 to see precisely which shared objects will be loaded.
