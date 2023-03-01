@@ -82,6 +82,40 @@ for a directory containing four .elf files. This command execution took almost 2
 
 
 The ``pmcstat`` tool is extremely powerful and can generate annotated stack traces attributing event counts to program functions. This is helpful for runtime profiling.
+Below is an example that profiles LL_CACHE_MISS_RD events on a binary_tree.elf executable, generating an intermediate file ``out.pmc`` that is post-processed to give a gprof style profile dump ``out.stacks``..
+
+.. code-block:: bash
+
+   pmcstat -S LL_CACHE_MISS_RD -O out.pmc ./binary_tree.elf
+   pmcstat -R out.pmc -z 32 -G out.stacks
+   cat out.stacks
+
+
+The output looks like this:
+
+::
+
+
+   @ MEM_ACCESS [138 samples]
+
+   60.14%  [83]       memmove_c @ /boot/kernel/kernel
+    100.0%  [83]        uiomove_fromphys_flags
+     100.0%  [83]         ffs_write
+      100.0%  [83]          VOP_WRITE_APV
+       100.0%  [83]           vn_write
+	100.0%  [83]            vn_io_fault
+	 100.0%  [83]             fork_exit
+
+   02.90%  [4]        __mtx_unlock_flags @ /boot/kernel/kernel
+    25.00%  [1]         g_io_deliver
+     100.0%  [1]          g_disk_done
+      100.0%  [1]           xpt_done_process
+       100.0%  [1]            xpt_done_direct
+	100.0%  [1]             ahci_ch_intr_direct
+	 100.0%  [1]              ahci_intr
+	  100.0%  [1]               ithread_loop
+	   100.0%  [1]                fork_exit
+   (snipped)
 
 
 Further references
