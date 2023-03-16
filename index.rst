@@ -31,6 +31,7 @@ key figures in the CHERI world.
 
 * Episode 1: **Capabilities in Cambridge**. Jeremy visits the University of Cambridge and chats with Robert Watson about the origins of the CHERI project. `[MP3] <https://capabilitiesforcoders.com/podcasts/cap4coders_pod1.mp3>`_
 
+You can subscribe to the Capabilities for Coders podcast on your favourite platform, e.g. `[Apple Podcasts] <https://podcasts.apple.com/gb/podcast/capabilities-for-coders/id1677565156>`_ 
 
 Search docs
 ==================
