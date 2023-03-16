@@ -22,7 +22,16 @@ YouTube playlist
 .. raw:: html
 	 
    <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLilv37aq2fhSgAtn6qjdv43qocxwiVrMD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-   
+
+Podcast series
+==============
+
+In the *Capabilities for Coders* podcast, Jeremy interviews some of the
+key figures in the CHERI world.
+
+* Episode 1: **Capabilities in Cambridge**. Jeremy visits the University of Cambridge and chats with Robert Watson about the origins of the CHERI project. `[MP3] <https://capabilitiesforcoders.com/podcasts/cap4coders_pod1.mp3>`_
+
+
 Search docs
 ==================
 
