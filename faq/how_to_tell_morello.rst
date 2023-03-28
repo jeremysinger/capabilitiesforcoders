@@ -3,14 +3,15 @@ How do I tell whether I am on a Morello machine?
 ================================================
 
 Every Arm processor has a *main id register* ``MDIR_EL1`` which
-contains a unique ID number for the system.
-The full 32-bit id value for Morello is ``0x3F0F4120``, as specified
+contains a unique CPUID identity number for the system.
+The full 32-bit CPUID value for Morello is ``0x3F0F4120``, as specified
 in the `Morello Technical Reference Manual <https://developer.arm.com/documentation/102278/latest>`_.
 
 You can query the main id register using the C code below, with the
 inline assembler to fetch the ``MDIR_EL1`` value.
 
 .. code-block:: C
+   :emphasize-lines: 12
 
    #include <stdio.h>
 
