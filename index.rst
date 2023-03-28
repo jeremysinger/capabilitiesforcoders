@@ -14,6 +14,7 @@ Capabilities for Coders
 
    about
    faq/index
+   compiler_errors/index
 
 
 YouTube playlist
