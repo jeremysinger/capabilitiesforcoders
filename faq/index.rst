@@ -7,12 +7,13 @@ when working with CHERI software?
 
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    get_a_board
    compiling
    hardware_performance_counters
    header
+   how_to_tell_morello
    installing_gdb
    printf
    running
