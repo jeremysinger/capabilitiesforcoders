@@ -16,7 +16,9 @@ when working with CHERI software?
    how_to_tell_morello
    installing_gdb
    printf
+   purecap_or_hybrid_binary
    running
    shared_library_path
    ldpreload
    tagcheck
+   compile_on_freebsd
