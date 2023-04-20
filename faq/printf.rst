@@ -29,3 +29,9 @@ This will output:
    The full capability (incl metadata) is 0x40823010 [rwRW,0x40823010-0x40823011]
 
 
+
+More info
+---------
+
+Check out the CHERI C/C++ programming wiki info on
+`printf formats <https://github.com/CTSRD-CHERI/cheri-c-programming/wiki/Displaying-Capabilities#printf3-formats>`_.
