@@ -23,3 +23,4 @@ when working with CHERI software?
    ldpreload
    tagcheck
    compile_on_freebsd
+   teardown
