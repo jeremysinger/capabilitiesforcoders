@@ -10,4 +10,5 @@ when using CHERI compilers, in particular the
 .. toctree::
    :maxdepth: 1
 
+   capability_misuse
    unclear_provenance
