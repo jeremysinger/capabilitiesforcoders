@@ -11,7 +11,7 @@ If you see a CHERI Clang/LLVM warning message like this::
 then you probably have tried to compile code that looks something like this:
 
 .. code-block:: C
-   :emphasize-lines: 5
+   :emphasize-lines: 3
 
    #include <stdint.h>
 
@@ -39,7 +39,7 @@ stored as ``uintptr_t`` types, or retained as pointers directly.
 An example refactoring would be:
 
 .. code-block:: C
-   :emphasize-lines: 5-6
+   :emphasize-lines: 3
 
    #include <stdint.h>
 
