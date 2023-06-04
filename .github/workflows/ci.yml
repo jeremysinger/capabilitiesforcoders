@@ -1,0 +1,22 @@
+name: Build and Deploy
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**/README.txt'
+      - '.gitignore'
+
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: install sphinx-build
+        run: |
+          pip3 install -U sphinx sphinx_copybutton
+      - name: build static pages
+        run: |
+          make build
