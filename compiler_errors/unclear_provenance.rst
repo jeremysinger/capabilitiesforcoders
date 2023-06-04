@@ -41,7 +41,23 @@ Avoiding this warning
 The best way to avoid the warning is to consider whether the binary
 operation on capability values makes sense. Would it be better to
 convert to a simple integer type and do the calculation in that
-(non-capability) domain instead?
+(non-capability) domain instead as follows
+
+.. code-block:: C
+   :emphasize-lines: 3
+
+   #include <stdint.h>
+
+   uintptr_t combine(uintptr_t a, ptraddr_t b) {
+     uintptr_t c;
+     c = (a&b);
+     return c;
+   }
+
+where ``b`` is now a ``ptraddr_t`` which is a simple integer.
+When doing bitwise-and operation, ``a``'s metadata will be
+retained.
+
 
 If you do continue to use capabilities, break the complex
 calculation down into two-address style code with
