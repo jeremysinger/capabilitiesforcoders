@@ -19,4 +19,4 @@ jobs:
           pip3 install -U sphinx sphinx_copybutton
       - name: build static pages
         run: |
-          make html SPHINXOPTS="-W"
+          make html SPHINXOPTS="-W --keep-going -n"
