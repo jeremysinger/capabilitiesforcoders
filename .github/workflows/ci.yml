@@ -10,16 +10,23 @@ on:
       - '.gitignore'
 
 jobs:
-  linux:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
       - name: install sphinx-build
         run: |
           pip3 install -U sphinx sphinx_copybutton
+
       - name: build static pages
         run: |
           make html SPHINXOPTS="-W --keep-going -n"
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
       - name: deploy
         if: github.ref == 'refs/heads/main'
         env:
