@@ -39,7 +39,7 @@ Avoiding this warning
 ^^^^^^^^^^^^^^^^^^^^^
 
 The best way to avoid the warning is to consider whether the binary
-operation on capability values makes sense. Would it be better to
+operation on capability values makes sense. It would be better to
 convert to a simple integer type and do the calculation in that
 (non-capability) domain instead as follows
 
