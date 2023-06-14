@@ -30,9 +30,9 @@ Podcast series
 In the *Capabilities for Coders* podcast, Jeremy interviews some of the
 key figures in the CHERI world.
 
-* Episode 1: **Capabilities in Cambridge**. Jeremy visits the University of Cambridge and chats with Robert Watson about the origins of the CHERI project. `[MP3] <https://capabilitiesforcoders.com/podcasts/cap4coders_pod1.mp3>`_
+* Episode 1: **Capabilities in Cambridge**. Jeremy visits the University of Cambridge and chats with Robert Watson about the origins of the CHERI project. `[Episode 1 - MP3] <https://capabilitiesforcoders.com/podcasts/cap4coders_pod1.mp3>`_
 
-* Episode 2: **Capabilities at CyberUK**. Jeremy visits the CyberUK event in Belfast and chats with John Goodacre about the Digital Security by Design project. `[MP3] <https://capabilitiesforcoders.com/podcasts/cap4coders_pod2.mp3>`_
+* Episode 2: **Capabilities at CyberUK**. Jeremy visits the CyberUK event in Belfast and chats with John Goodacre about the Digital Security by Design project. `[Episode 2 - MP3] <https://capabilitiesforcoders.com/podcasts/cap4coders_pod2.mp3>`_
   
 You can subscribe to the Capabilities for Coders podcast on your favourite platform, e.g. `[Apple Podcasts] <https://podcasts.apple.com/gb/podcast/capabilities-for-coders/id1677565156>`_ `[Amazon Podcasts] <https://music.amazon.co.uk/podcasts/2962dbd2-03f3-436f-b5cc-a173a97ff4c9/capabilities-for-coders>`_ `[Spotify] <https://open.spotify.com/show/7Bb9dBEriANYNcO5IdljOS?si=73201138446a46c8>`_
 
