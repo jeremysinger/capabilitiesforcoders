@@ -32,4 +32,4 @@ jobs:
         env:
           DEPLOY_HOOK_URL: ${{ secrets.DEPLOY_HOOK_URL }}
         run: |
-          curl -sS --no-progress-memter "${DEPLOY_HOOK_URL}"
+          curl -sS --no-progress-meter "${DEPLOY_HOOK_URL}"
