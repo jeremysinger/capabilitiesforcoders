@@ -103,3 +103,20 @@ An example refactoring would be:
    }
 
 which preserves the capability metadata.
+
+However, in cases where it's not possible to return a capability-enanbled pointer,
+you can do an explicit cast using ``__cheri_fromcap``.
+
+An example refactoring would be:
+
+.. code-block:: C
+   :emphasize-lines: 4
+
+   #include <stddef.h>
+   #include <stdint.h>
+
+   void * foo(void * __capability value, ptrdiff_t offset) {
+     return (__cheri_fromcap void *)(value + offset);
+   }
+
+which allows to cast from capability-enanbled pointer to a plain one.
