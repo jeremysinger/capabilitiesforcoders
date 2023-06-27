@@ -11,4 +11,5 @@ when using CHERI compilers, in particular the
    :maxdepth: 1
 
    capability_misuse
+   implicit_conversion
    unclear_provenance
