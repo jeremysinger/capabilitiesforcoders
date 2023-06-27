@@ -57,7 +57,7 @@ capability metadata is preserved in the ``uintptr_t`` datatype.
 In Hybrid Mode
 --------------
 
-When compiling code using purecap ABI, if you see a CHERI
+When compiling code using hybrid ABI, if you see a CHERI
 Clang/LLVM warning message like this::
 
    error: cast from capability type 'void * __capability' to
