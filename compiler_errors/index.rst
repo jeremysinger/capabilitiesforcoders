@@ -1,6 +1,6 @@
-============================
-Common CHERI compiler errors
-============================
+=========================================
+Common CHERI compiler warnings and errors
+=========================================
 
 What are the common warnings and error messages developers see
 when using CHERI compilers, in particular the
@@ -11,4 +11,5 @@ when using CHERI compilers, in particular the
    :maxdepth: 1
 
    capability_misuse
+   implicit_conversion
    unclear_provenance
