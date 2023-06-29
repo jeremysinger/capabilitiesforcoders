@@ -104,7 +104,7 @@ An example refactoring would be:
 
 which preserves the capability metadata.
 
-However, in cases where it's not possible to return a capability-enanbled pointer,
+However, in cases where it's not possible to return a capability-enabled pointer,
 you can do an explicit cast using ``__cheri_fromcap``.
 
 An example refactoring would be:
