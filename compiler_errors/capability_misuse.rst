@@ -119,4 +119,4 @@ An example refactoring would be:
      return (__cheri_fromcap void *)(value + offset);
    }
 
-which allows to cast from capability-enanbled pointer to a plain one.
+which allows to cast from capability-enabled pointer to a plain one.
