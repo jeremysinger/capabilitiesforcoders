@@ -54,7 +54,7 @@ An example refactoring would be:
 
 which preserves the capability metadata.
 
-However, in cases where it's not possible to accept a capability-enanbled pointer,
+However, in cases where it's not possible to accept a capability-enabled pointer,
 you can do an explicit cast using ``__cheri_tocap``.
 
 An example refactoring would be:
@@ -69,4 +69,4 @@ An example refactoring would be:
      return (__cheri_tocap void * __capability)(value + offset);
    }
 
-which allows casting to capability-enanbled pointer.
+which allows casting to capability-enabled pointer.
