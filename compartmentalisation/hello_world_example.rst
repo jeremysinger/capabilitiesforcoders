@@ -1,6 +1,12 @@
-======================
-"Hello World" Example
-======================
+==================================
+"Hello World" Compartments Example
+==================================
+
+This code is inspired by (and strongly based on) the official
+Arm Morello examples code at https://git.morello-project.org/morello/morello-examples/ although their code is for Morello Linux and we aim to run
+on CheriBSD.
+
+
 
 Create Compartment
 ------------------
