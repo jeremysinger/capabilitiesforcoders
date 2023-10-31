@@ -1,6 +1,6 @@
-===================================================
- How do I install configure networking on CheriBSD?
-===================================================
+===========================================
+ How do I configure networking on CheriBSD?
+===========================================
 
 Once you have installed CheriBSD, you will need to
 configure the networking.
@@ -11,6 +11,7 @@ Ethernet cable
 First plug your ethernet cable into the socket labelled **GbE/USB3**.
 If you need to register your Ethernet MAC address with your network
 administrator, you can find this by running the interactive command:
+
 .. code-block:: bash
 
    ifconfig re0
