@@ -12,6 +12,7 @@ when working with CHERI software?
    what_is_a_capability      
    get_a_board
    compiling
+   configure_networking
    hardware_performance_counters
    header
    how_to_tell_morello
