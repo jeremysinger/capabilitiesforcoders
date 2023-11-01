@@ -65,4 +65,4 @@ Hopefully now you can access your Morello CheriBSD server via
 Further references
 ------------------
 
-* Official FreeBSD docs on setting up networking: `https://docs.freebsd.org/en/books/handbook/network/`_ (Since CheriBSD is based on FreeBSD these instructions are directly applicable)
+* Official FreeBSD docs on `setting up networking <https://docs.freebsd.org/en/books/handbook/network/>`_ (Since CheriBSD is based on FreeBSD these instructions are directly applicable)
