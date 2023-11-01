@@ -63,6 +63,6 @@ causes a capability protection fault on Morello.
 Further references
 ------------------
 
-* Paper about MicroPython port to CHERI `https://eprints.gla.ac.uk/304475/`_ (published at ACM SIGPLAN MPLR 2023 conference)
-* Paper about optimizing MicroPython port to CHERI `https://eprints.gla.ac.uk/305684/`_ (published at ACM SIGPLAN VMIL 2023 workshop)
-* Documentation for MicroPython `https://docs.micropython.org/en/latest/`_ (the most relevant docs are for the Unix port))
+* Paper about `MicroPython port to CHERI <https://eprints.gla.ac.uk/304475/>`_ (published at ACM SIGPLAN MPLR 2023 conference)
+* Paper about `optimizing MicroPython port to CHERI <https://eprints.gla.ac.uk/305684/>`_ (published at ACM SIGPLAN VMIL 2023 workshop)
+* Documentation for `MicroPython project <https://docs.micropython.org/en/latest/>`_ (the most relevant docs are for the Unix port))
