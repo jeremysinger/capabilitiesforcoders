@@ -15,6 +15,7 @@ Capabilities for Coders
    about
    faq/index
    compartmentalisation/index
+   capabilities/index
    compiler_errors/index
 
 
