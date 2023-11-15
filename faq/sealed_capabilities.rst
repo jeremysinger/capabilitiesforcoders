@@ -74,9 +74,17 @@ To run the program, we can use ``morelloie``:
 
 
 The ``%#p`` format specifier is used to print a capability pointer in hexadecimal format along with some
-properties of this capability pointer, which contains its address (``0x211545``), permissions (``rxRE``), 
-and the semi-closed memory range (``[base, limit)``) that the capability points to (``0x200200-0x226c40``).
-And some extra information like the ``sentry`` keyword at the end of the output.
+properties and attributes of this capability pointer. It prints the capability pointer in the following
+format:
+
+.. code-block:: text
+
+    <address> [<permissions>,<base>-<top>] (<attr>)
+
+
+which contains its address (``0x211545``), permissions (``rxRE``),  and the semi-closed memory range
+(``[base, limit)``) that the capability points to (``0x200200-0x226c40``). And the attributes of the 
+capability pointer like the ``sentry`` keyword at the end of the output.
 
 The permissions part of a capability determine what operations are allowed via this capability, and they can
 be grouped into the following categories: `[2] <https://www.morello-project.org/resources/morello-linux-morelloie/#:~:text=Permissions%20of%20a%20capability%20determine%20what%20operations%20are%20allowed%20via%20this%20capability.%20In%20a%20nutshell%2C%20they%20can%20be%20grouped%20into%20the%20following%20categories>`_
