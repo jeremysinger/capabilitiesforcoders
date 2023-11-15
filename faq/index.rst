@@ -15,6 +15,7 @@ when working with CHERI software?
    configure_networking
    hardware_performance_counters
    header
+   how_to_seal
    how_to_tell_morello
    installing_gdb
    printf
