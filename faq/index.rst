@@ -19,6 +19,7 @@ when working with CHERI software?
    installing_gdb
    printf
    purecap_or_hybrid_binary
+   capabilities
    sealed_capabilities
    python
    running
