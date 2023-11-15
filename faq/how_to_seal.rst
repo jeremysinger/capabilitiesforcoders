@@ -32,7 +32,7 @@ seal).
 
 
 .. code-block:: C
-   :emphasize-lines: 29,33
+   :emphasize-lines: 28,32
 
    #include <cheriintrin.h>
    #include <sys/cdefs.h>
