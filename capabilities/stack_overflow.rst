@@ -60,11 +60,11 @@ For example, consider the following program:
     }
 
 
-When compiling it with the following command,
+When compiling it with the following command on a non-CHERI system,
 
 .. code-block:: bash
 
-    $ clang-morello -O0 -g -march=armv8.2-a stack_overflow.c -o stack_overflow_unprotected
+    $ clang-morello -O0 -g stack_overflow.c -o stack_overflow_unprotected
 
 
 and executing it with ``AAA`` as shown below, it works as expected:
@@ -121,15 +121,32 @@ with the Morello compiler:
 
 .. code-block:: shell
 
-    $ clang-morello -O0 -g -D__morello__ -march=morello+c64 -mabi=purecap -Xclang -morello-vararg=new stack_overflow.c -o stack_overflow
+    # compile natively on a Morello system
+    $ clang-morello -O0 -g -D__morello__ \
+        -march=morello -mabi=purecap \
+        -Xclang -morello-vararg=new \
+        stack_overflow.c -o stack_overflow
 
+    # cross-compile with LLVM toolchain and musl libc
+    # LLVM toolchain: https://git.morello-project.org/morello/llvm-project-releases
+    # musl libc: https://git.morello-project.org/morello/musl-libc
+    $ clang -O0 -g -D__morello__ \
+        -march=morello --target=aarch64-linux-musl_purecap \
+        --sysroot=/root/musl-sysroot-purecap \
+        stack_overflow.c -o stack_overflow -static
 
 and execute it with ``AAAAA``:
 
 .. code-block:: shell
 
-    $ clang-morello -O0 -g -D__morello__ -march=morello+c64 -mabi=purecap -Xclang -morello-vararg=new stack_overflow.c -o stack_overflow
+    # run on a Morello system natively
     $ ./stack_overflow AAAAA
+    
+    # OR
+    # run on a Morello system with Morello Instruction Emulator, morelloie
+    # morelloie: https://developer.arm.com/downloads/-/morello-instruction-emulator
+    $ morelloie -- ./stack_overflow AAAAA
+
     buffer: 0xfffffff7ff58 [rwRW,0xfffffff7ff58-0xfffffff7ff5c]
     i = 1 (0xfffffff7ff5c [rwRW,0xfffffff7ff5c-0xfffffff7ff60])
     Change i\'s value from 1 -> 500.
