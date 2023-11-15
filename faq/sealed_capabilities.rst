@@ -45,7 +45,7 @@ let's say that we have the following ``func.c`` program:
 
     int main(int argc, char *argv[])
     {
-        void *cap1 = fun;
+        void *cap1 = func;
         void *cap2 = cap1 + 1;
         printf("%#p\n", cap1);
         printf("%#p\n", cap2);
