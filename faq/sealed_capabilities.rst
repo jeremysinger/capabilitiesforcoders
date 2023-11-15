@@ -58,19 +58,33 @@ as ``aarch64-linux-musl_purecap`` and the sysroot as ``/root/musl-sysroot-pureca
 
 .. code-block:: shell
 
+    # compile in the MorelloIE Docker image
     $ clang -march=morello \
         --target=aarch64-linux-musl_purecap \
         --sysroot=/root/musl-sysroot-purecap \
         func.c -o func -static
 
+    # or compile it on a Morello system
+    $ clang-morello -march=morello+c64 -mabi=purecap \
+        -Xclang -morello-vararg=new \
+        -O0 -g func.c -o func
 
-To run the program, we can use ``morelloie``:
+
+To run the program in the MorelloIE Docker image, we can use ``morelloie`` while on a Morello
+system, we can just run the output binary ``./func``. The output of the program is shown below.
+And in the following sections, we'll only show the output of ``morelloie``, as the output of the
+example program on a Morello system should be the same.
+
 
 .. code-block:: shell
 
     $ morelloie -- ./func
     0x211545 [rxRE,0x200200-0x226c40] (sentry)
     0x211546 [rxRE,0x200200-0x226c40] (invalid,sentry)
+
+    $ ./func
+    0x110a3d [rxR,0x100000-0x130e80] (sentry)
+    0x110a3e [rxR,0x100000-0x130e80] (invalid,sentry)
 
 
 The ``%#p`` format specifier is used to print a capability pointer in hexadecimal format along with some
