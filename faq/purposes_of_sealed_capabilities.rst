@@ -14,82 +14,9 @@ security and capability-based systems:
   such as permissions and bounds, are fixed, and any attempt to tamper with
   the capability will result in an invalid capability, which we can validate
   it using ``cheri_is_valid``, or a trap will be raised once the program
-  attempts to use the invalid capability.
-
-  .. code-block:: c
-
-    #include <stdio.h>
-    #include <stdlib.h>
-    #include <string.h>
-    #include <cheriintrin.h>
-    #include <sys/sysctl.h>
-
-    void untrusted_3rd_party_func1(void * data);
-    void untrusted_3rd_party_func2(void * data);
-
-    int main()
-    {
-      char * buf = (char *)malloc(32);
-      memset(buf, 0, 32);
-      strcpy(buf, "Hello, world!");
-      printf("[main] buf: %#p, valid: %d\n", buf, cheri_is_valid(buf));
-
-      // we can seal the capability to prevent tampering
-      // using `cheri_seal`
-      void * sealcap;
-      size_t sealcap_size = sizeof(sealcap);
-      if (sysctlbyname("security.cheri.sealcap", &sealcap, &sealcap_size, NULL, 0) < 0)
-      {
-          fprintf(stderr, "Fatal error. Cannot get `security.cheri.sealcap`.");
-          exit(1);
-      }
-      void * sealed = cheri_seal(buf, sealcap);
-      printf("[main] sealed: %#p, valid: %d\n", sealed, cheri_is_valid(sealed));
-
-      // this function will only print metadata of the sealed capability
-      // and that's safe
-      untrusted_3rd_party_func1(sealed);
-
-      // we can unseal the capability with the original sealer, `sealcap`
-      printf("[after] sealed: %#p, valid: %d\n", sealed, cheri_is_valid(sealed));
-      char * unsealed = (char *)cheri_unseal(sealed, sealcap);
-      printf("[after] unsealed: %#p, %s\n", unsealed, unsealed);
-
-      // this function will try to read the sealed capability
-      // and that will cause a trap
-      untrusted_3rd_party_func2(sealed);
-    }
-
-    void untrusted_3rd_party_func1(void * data)
-    {
-      printf("[func1] sealed: %#p, valid: %d\n", data, cheri_is_valid(data));
-    }
-
-    void untrusted_3rd_party_func2(void * data)
-    {
-      printf("[func2] sealed: %#p, %s\n", data, (char *)data);
-    }
-
-
-  The example code above won't be able to compile with the MUSL libc library because there's
-  no `sysctlbyname` in MUSL libc. Therefore, we have to either compile it natively on CheriBSD
-  or with the GCC toolchain. 
-  
-  If we build and run the program, we will see the following output:
-
-  .. code-block:: shell
-    # compile and run on a Morello system
-    $ clang-morello -march=morello+c64 -mabi=purecap \
-        -Xclang -morello-vararg=new \
-        -O0 -g tamper-proof.cpp -o tamper-proof
-    $ ./tamper-proof
-    [main] buf: 0x40838000 [rwRW,0x40838000-0x40838020], valid: 1
-    [main] sealed: 0x40838000 [rwRW,0x40838000-0x40838020] (sealed), valid: 1
-    [3rd_party_func] sealed: 0x40838000 [rwRW,0x40838000-0x40838020] (sealed), valid: 1
-    [after] sealed: 0x40838000 [rwRW,0x40838000-0x40838020] (sealed), valid: 1
-    [after] unsealed: 0x40838000 [rwRW,0x40838000-0x40838020], Hello, world!
-    In-address space security exception (core dumped)
-
+  attempts to use the invalid capability. Please see the post
+  `How do I seal a capability? <https://capabilitiesforcoders.com/faq/how_to_seal.html>`
+  for more details.
 
 #. Code and Control Flow Integrity
 
