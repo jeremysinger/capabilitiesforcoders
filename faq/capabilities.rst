@@ -100,7 +100,8 @@ emulating the CPU.
 If you're using either the LLVM or the GCC MorelloIE Docker image, you need to run the
 program with ``morelloie``. The output of the program is shown below. (In the following
 sections, we'll only show the output of ``morelloie``, as the output of the example program
-on a Morello system should be the same.)
+on a Morello system should be the same, except for the memory address due to ASLR 
+(Address space layout randomization).)
 
 .. code-block:: shell
 
