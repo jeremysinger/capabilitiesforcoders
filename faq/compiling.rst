@@ -103,6 +103,56 @@ to purecap binaries like this:
 You need to specify both the march and mabi flags explicitly for
 purecap mode.
 
+However, if you're using an old version of `clang-morello` and 
+trying to pass a capability pointer to a varidiac function, such
+as `printf`, you might still encounter the `SIGPROT` fault.
+
+Let's say we have the following code, where `my_func` is a varidiac
+function that you'd like to invoke with some capability pointers:
+
+.. code-block:: c
+
+   // varidiac.c
+   #include <stdarg.h>
+   #include <stdio.h>
+   #include <string.h>
+
+   size_t my_func(int num, ...) {
+      va_list args;
+      va_start(args, num);
+      size_t len = 0;
+      for (int i = 0; i < num; i++) {
+         len += strlen(va_arg(args, char *));
+      }
+      va_end(args);
+      return len;
+   }
+
+   int main() {
+      size_t bytes = my_func(3, "str1", "this is str2", "and str3");
+      printf("Total bytes: %zu\n", bytes);
+   }
+
+
+And if you compile the code with the compilation command above and 
+run the output binary, you'll see the following output:
+
+.. code-block:: bash
+
+   $ clang-morello -march=morello+c64 -mabi=purecap ./varidiac.c
+   $ ./a.out
+   In-address space security exception (core dumped)
+
+
+To fix this, we have to pass an extra argument, `-Xclang -morello-vararg=new`,
+to clang to indicate that we intend to use varidiac functions with
+capability pointers:
+
+.. code-block:: bash
+
+   $ clang-morello -march=morello+c64 -mabi=purecap -Xclang -morello-vararg=new ./varidiac.c
+   $ ./a.out
+   Total bytes: 24
 
 
 Which compiler?

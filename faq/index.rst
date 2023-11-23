@@ -15,12 +15,14 @@ when working with CHERI software?
    configure_networking
    hardware_performance_counters
    header
+   how_to_seal
    how_to_tell_morello
    installing_gdb
    printf
    purecap_or_hybrid_binary
    capabilities
    sealed_capabilities
+   purposes_of_sealed_capabilities
    python
    running
    shared_library_path
