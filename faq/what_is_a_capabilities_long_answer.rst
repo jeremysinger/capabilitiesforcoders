@@ -1,6 +1,6 @@
-====================
-What is a Capability
-====================
+=========================================
+What is a CHERI capability? (long answer)
+=========================================
 
 A capability is a token of authority over a continuous memory space. It associates traditional
 pointers with a set of permissions and properties. Capabilities are unforgeable and unguessable,
@@ -20,18 +20,18 @@ For example, let's say that we have the following ``func.c`` program:
 
 .. code-block:: C
 
-    // func.c
-    #include <stdio.h>
+   // func.c
+   #include <stdio.h>
 
-    void func() { }
+   void func() { }
 
-    int main(int argc, char *argv[])
-    {
-        void *cap1 = func;
-        void *cap2 = cap1 + 1;
-        printf("%#p\n", cap1);
-        printf("%#p\n", cap2);
-    }
+   int main(int argc, char *argv[])
+   {
+      void *cap1 = func;
+      void *cap2 = cap1 + 1;
+      printf("%#p\n", cap1);
+      printf("%#p\n", cap2);
+   }
 
 
 We'll mention the ``%#p`` format specifier later once we saw the output.
@@ -52,10 +52,10 @@ the compilation command varies:
 
   .. code-block:: shell
 
-    $ clang -march=morello \
-        --target=aarch64-linux-musl_purecap \
-        --sysroot=/root/musl-sysroot-purecap \
-        -O0 -g func.c -o func -static
+   $ clang -march=morello \
+       --target=aarch64-linux-musl_purecap \
+       --sysroot=/root/musl-sysroot-purecap \
+       -O0 -g func.c -o func -static
 
 
 - If you're using the GCC Docker image, ``cocoaxu/morelloie-gcc``, then we can compile
@@ -63,8 +63,8 @@ the compilation command varies:
 
   .. code-block:: shell
 
-    $ gcc -march=morello+c64 -mabi=purecap \
-        -O0 -g func.c -o func -static
+   $ gcc -march=morello+c64 -mabi=purecap \
+       -O0 -g func.c -o func -static
 
 
 - If you're on a Morello system, then you can compile the program with ``clang-morello``;
@@ -74,9 +74,9 @@ the compilation command varies:
 
   .. code-block:: shell
 
-    $ clang-morello -march=morello+c64 -mabi=purecap \
-        -Xclang -morello-vararg=new \
-        -O0 -g func.c -o func
+   $ clang-morello -march=morello+c64 -mabi=purecap \
+       -Xclang -morello-vararg=new \
+       -O0 -g func.c -o func
 
 
 After the compilation, if you're on a Morello system, you can simply execute the program
@@ -91,13 +91,13 @@ on a Morello system should be the same, except for the memory address due to ASL
 
 .. code-block:: shell
 
-    $ morelloie -- ./func
-    0x211545 [rxRE,0x200200-0x226c40] (sentry)
-    0x211546 [rxRE,0x200200-0x226c40] (invalid,sentry)
+   $ morelloie -- ./func
+   0x211545 [rxRE,0x200200-0x226c40] (sentry)
+   0x211546 [rxRE,0x200200-0x226c40] (invalid,sentry)
 
-    $ ./func
-    0x110a3d [rxR,0x100000-0x130e80] (sentry)
-    0x110a3e [rxR,0x100000-0x130e80] (invalid,sentry)
+   $ ./func
+   0x110a3d [rxR,0x100000-0x130e80] (sentry)
+   0x110a3e [rxR,0x100000-0x130e80] (invalid,sentry)
 
 
 The ``%#p`` format specifier is used to print a capability pointer in hexadecimal format along with some
@@ -106,7 +106,7 @@ format:
 
 .. code-block:: text
 
-    <address> [<permissions>,<base>-<top>] (<attr>)
+   <address> [<permissions>,<base>-<top>] (<attr>)
 
 
 which contains its address (``0x211545``), permissions (``rxRE``),  and the semi-closed memory range
@@ -136,34 +136,34 @@ the permissions of a capability, you can do that with builtin functions provided
 
 .. code-block:: C
 
-    #include <cheriintrin.h>
-    #include <stdio.h>
-    #include <stdlib.h>
+   #include <cheriintrin.h>
+   #include <stdio.h>
+   #include <stdlib.h>
 
-    #define LOAD __CHERI_CAP_PERMISSION_PERMIT_LOAD__
-    #define LOAD_CAP __CHERI_CAP_PERMISSION_PERMIT_LOAD_CAPABILITY__
-    #define MUTABLE_LOAD __ARM_CAP_PERMISSION_MUTABLE_LOAD__
+   #define LOAD __CHERI_CAP_PERMISSION_PERMIT_LOAD__
+   #define LOAD_CAP __CHERI_CAP_PERMISSION_PERMIT_LOAD_CAPABILITY__
+   #define MUTABLE_LOAD __ARM_CAP_PERMISSION_MUTABLE_LOAD__
 
-    #define STORE __CHERI_CAP_PERMISSION_PERMIT_STORE__
-    #define STORE_CAP __CHERI_CAP_PERMISSION_PERMIT_STORE_CAPABILITY__
-    #define STORE_LOCAL __CHERI_CAP_PERMISSION_PERMIT_STORE_LOCAL__
+   #define STORE __CHERI_CAP_PERMISSION_PERMIT_STORE__
+   #define STORE_CAP __CHERI_CAP_PERMISSION_PERMIT_STORE_CAPABILITY__
+   #define STORE_LOCAL __CHERI_CAP_PERMISSION_PERMIT_STORE_LOCAL__
 
-    void untrusted_3rd_party_func(char *str);
+   void untrusted_3rd_party_func(char *str);
 
-    int main()
-    {
-        char *str = malloc(sizeof(char) * 32);
-        char *ro_str = cheri_perms_and(str, LOAD | LOAD_CAP | MUTABLE_LOAD);
-        printf("str in main   : %#p\n", str);
-        printf("ro_str in main: %#p\n", str);
-        untrusted_3rd_party_func(ro_str);
-    }
+   int main()
+   {
+      char *str = malloc(sizeof(char) * 32);
+      char *ro_str = cheri_perms_and(str, LOAD | LOAD_CAP | MUTABLE_LOAD);
+      printf("str in main   : %#p\n", str);
+      printf("ro_str in main: %#p\n", str);
+      untrusted_3rd_party_func(ro_str);
+   }
 
-    void untrusted_3rd_party_func(char *str)
-    {
-        printf("str in func   : %#p\n", str);
-        str[0] = 'A';
-    }
+   void untrusted_3rd_party_func(char *str)
+   {
+      printf("str in func   : %#p\n", str);
+      str[0] = 'A';
+   }
 
 
 In the example above, we have some macros that are used to define the permissions of a capability: 
@@ -187,33 +187,33 @@ If we compile the example above and run it with ``morelloie``, we will get the f
 
 .. code-block:: shell
 
-    $ clang -march=morello \
-        --target=aarch64-linux-musl_purecap \
-        --sysroot=/root/musl-sysroot-purecap \
-        str.c -o str -static
-    $ morelloie -- ./str
-    str in main   : 0xffff80b98040 [rwRW,0xffff80b98040-0xffff80b98060]
-    ro_str in main: 0xffff80b98040 [rwRW,0xffff80b98040-0xffff80b98060]
-    str in func   : 0xffff80b98040 [rR,0xffff80b98040-0xffff80b98060]
-    [emulator] simulated capability fault at 2116b4 in thread 402
-    Insufficient permissions (required ----w-------------)
-    0x1:90100000:40608040:0000ffff:80b98040
-              tag: true
-          address: 0x00000ffff80b98040
-             base: 0x00000ffff80b98040
-            limit: 0x00000ffff80b98060
-           bounds: valid
-        in bounds: true
-           length: 32
-           offset: 0
-      permissions: -rRM--------------
-           sealed: (not sealed)
-            flags: 0
-         exponent: 0
-              top: 0x8060
-           bottom: 0x8040
-            local: true
-    Segmentation fault
+   $ clang -march=morello \
+      --target=aarch64-linux-musl_purecap \
+      --sysroot=/root/musl-sysroot-purecap \
+      str.c -o str -static
+   $ morelloie -- ./str
+   str in main   : 0xffff80b98040 [rwRW,0xffff80b98040-0xffff80b98060]
+   ro_str in main: 0xffff80b98040 [rwRW,0xffff80b98040-0xffff80b98060]
+   str in func   : 0xffff80b98040 [rR,0xffff80b98040-0xffff80b98060]
+   [emulator] simulated capability fault at 2116b4 in thread 402
+   Insufficient permissions (required ----w-------------)
+   0x1:90100000:40608040:0000ffff:80b98040
+            tag: true
+         address: 0x00000ffff80b98040
+            base: 0x00000ffff80b98040
+         limit: 0x00000ffff80b98060
+         bounds: valid
+      in bounds: true
+         length: 32
+         offset: 0
+   permissions: -rRM--------------
+         sealed: (not sealed)
+         flags: 0
+      exponent: 0
+            top: 0x8060
+         bottom: 0x8040
+         local: true
+   Segmentation fault
 
 
 As we can see, the capability ``ro_str`` has the ``rR`` permissions, which means that it can be used to read data,
