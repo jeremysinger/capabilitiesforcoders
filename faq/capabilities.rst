@@ -93,13 +93,14 @@ the compilation command varies:
         -O0 -g func.c -o func
 
 
-Of course, if you're on a Morello system, you don't need ``morelloie`` to emulate the CPU. 
-You can simply execute the program as what you'd do on a normal aarch64 Linux system. If 
-you're using either LLVM or GCC Morelloie Docker image, you need to run the program with
-``morelloie``. The output of the program is shown below. (In the following sections, we'll
-only show the output of ``morelloie``, as the output of the example program on a Morello
-system should be the same.)
+After the compilation, if you're on a Morello system, you can simply execute the program
+as what you'd do on a normal aarch64 Linux system without the need of ``morelloie`` for
+emulating the CPU. 
 
+If you're using either the LLVM or the GCC MorelloIE Docker image, you need to run the
+program with ``morelloie``. The output of the program is shown below. (In the following
+sections, we'll only show the output of ``morelloie``, as the output of the example program
+on a Morello system should be the same.)
 
 .. code-block:: shell
 
