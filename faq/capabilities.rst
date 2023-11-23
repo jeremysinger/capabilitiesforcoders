@@ -16,28 +16,7 @@ and can be passed around between threads and processes. A capability have the fo
 - Object type: a property related to sealing of capabilities (see below).
 - Flags: application defined bits.
 
-You can follow the example code below if you have a Morello board or MorelloIE, the Morello 
-Instruction Emulator. You can use the prebuilt MorelloIE Docker image, either ``cocoaxu/morelloie-llvm``
-or ``cocoaxu/morelloie-gcc`` (LLVM-toochain and GCC-toolchain respectively), for a quick start.
-
-
-.. code-block:: shell
-
-    # using LLVM toolchain with musl libc
-    $ docker run -it --rm cocoaxu/morelloie-llvm
-
-    # using GCC toolchain with glibc
-    $ docker run -it --rm cocoaxu/morelloie-gcc
-
-
-Inside these Docker images, they both have ``morelloie`` pre-installed while the CHERI compiler
-is ``clang`` and ``gcc`` respectively. And for the LLVM toolchain specificly, a sysroot directory
-for Purecap can be found at ``/root/musl-sysroot-purecap``, which can be used later
-when compiling Purecap Morello programs with ``clang``.
-
-After compiling the example code, you can use ``morelloie`` to run your program. For example, 
-let's say that we have the following ``func.c`` program:
-
+For example, let's say that we have the following ``func.c`` program:
 
 .. code-block:: C
 
@@ -55,7 +34,14 @@ let's say that we have the following ``func.c`` program:
     }
 
 
-We'll mention the ``%#p`` format specifier later once we saw the output. 
+We'll mention the ``%#p`` format specifier later once we saw the output.
+
+You can follow the example code above if you have a Morello board or use MorelloIE, the Morello 
+Instruction Emulator. You can use these non-official prebuilt MorelloIE Docker images, such
+as ``cocoaxu/morelloie-llvm`` and ``cocoaxu/morelloie-gcc`` for a quick start. They contain
+LLVM-toochain and GCC-toolchain respectively. Please refer to the post,
+`How do I compile for CHERI? <https://capabilitiesforcoders.com/faq/compiling.html>`_ for more
+information about how to set up and how to compile for CHERI.
 
 Now we can compile it with the CHERI compiler, and based on your enviroment,
 the compilation command varies:
@@ -69,7 +55,7 @@ the compilation command varies:
     $ clang -march=morello \
         --target=aarch64-linux-musl_purecap \
         --sysroot=/root/musl-sysroot-purecap \
-        func.c -o func -static
+        -O0 -g func.c -o func -static
 
 
 - If you're using the GCC Docker image, ``cocoaxu/morelloie-gcc``, then we can compile
@@ -78,7 +64,7 @@ the compilation command varies:
   .. code-block:: shell
 
     $ gcc -march=morello+c64 -mabi=purecap \
-        -O0 -g func.c -o func
+        -O0 -g func.c -o func -static
 
 
 - If you're on a Morello system, then you can compile the program with ``clang-morello``;
