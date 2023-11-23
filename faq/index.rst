@@ -9,7 +9,8 @@ when working with CHERI software?
 .. toctree::
    :maxdepth: 1
 
-   what_is_a_capability      
+   what_is_a_capability_short_answer
+   what_is_a_capability_long_answer
    get_a_board
    compiling
    configure_networking
@@ -20,6 +21,7 @@ when working with CHERI software?
    installing_gdb
    printf
    purecap_or_hybrid_binary
+   sealed_capabilities
    purposes_of_sealed_capabilities
    python
    running
