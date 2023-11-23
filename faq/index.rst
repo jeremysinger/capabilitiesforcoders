@@ -20,6 +20,7 @@ when working with CHERI software?
    installing_gdb
    printf
    purecap_or_hybrid_binary
+   purposes_of_sealed_capabilities
    python
    running
    shared_library_path
