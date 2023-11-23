@@ -198,21 +198,21 @@ If we compile the example above and run it with ``morelloie``, we will get the f
    [emulator] simulated capability fault at 2116b4 in thread 402
    Insufficient permissions (required ----w-------------)
    0x1:90100000:40608040:0000ffff:80b98040
-            tag: true
+             tag: true
          address: 0x00000ffff80b98040
             base: 0x00000ffff80b98040
-         limit: 0x00000ffff80b98060
-         bounds: valid
-      in bounds: true
-         length: 32
-         offset: 0
-   permissions: -rRM--------------
-         sealed: (not sealed)
-         flags: 0
-      exponent: 0
-            top: 0x8060
-         bottom: 0x8040
-         local: true
+           limit: 0x00000ffff80b98060
+          bounds: valid
+       in bounds: true
+          length: 32
+          offset: 0
+     permissions: -rRM--------------
+          sealed: (not sealed)
+           flags: 0
+        exponent: 0
+             top: 0x8060
+          bottom: 0x8040
+           local: true
    Segmentation fault
 
 
