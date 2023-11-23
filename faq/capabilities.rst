@@ -17,18 +17,23 @@ and can be passed around between threads and processes. A capability have the fo
 - Flags: application defined bits.
 
 You can follow the example code below if you have a Morello board or MorelloIE, the Morello 
-Instruction Emulator. You can use the prebuilt MorelloIE Docker image, ``cocoaxu/morelloie``, 
-for a quick start.
+Instruction Emulator. You can use the prebuilt MorelloIE Docker image, either ``cocoaxu/morelloie-llvm``
+or ``cocoaxu/morelloie-gcc`` (LLVM-toochain and GCC-toolchain respectively), for a quick start.
 
 
 .. code-block:: shell
 
-    $ docker run -it --rm cocoaxu/morelloie
+    # using LLVM toolchain with musl libc
+    $ docker run -it --rm cocoaxu/morelloie-llvm
+
+    # using GCC toolchain with glibc
+    $ docker run -it --rm cocoaxu/morelloie-gcc
 
 
-Inside this Docker image, ``morelloie`` and ``clang`` are available. Besides that, a sysroot 
-directory for Purecap can be found at ``/root/musl-sysroot-purecap``, which can be used later
-when compiling Purecap Morello programs with clang. 
+Inside these Docker images, they both have ``morelloie`` pre-installed while the CHERI compiler
+is ``clang`` and ``gcc`` respectively. And for the LLVM toolchain specificly, a sysroot directory
+for Purecap can be found at ``/root/musl-sysroot-purecap``, which can be used later
+when compiling Purecap Morello programs with ``clang``.
 
 After compiling the example code, you can use ``morelloie`` to run your program. For example, 
 let's say that we have the following ``func.c`` program:
@@ -50,28 +55,50 @@ let's say that we have the following ``func.c`` program:
     }
 
 
-We'll mention the ``%#p`` format specifier later once we saw the output. Now we can 
-compile it with ``clang`` using the following command, where we specify the target
-as ``aarch64-linux-musl_purecap`` and the sysroot as ``/root/musl-sysroot-purecap``:
+We'll mention the ``%#p`` format specifier later once we saw the output. 
 
-.. code-block:: shell
+Now we can compile it with the CHERI compiler, and based on your enviroment,
+the compilation command varies:
 
-    # compile in the MorelloIE Docker image
+- If you're using the LLVM Docker image, ``cocoaxu/morelloie-llvm``, then the 
+  CHREI compiler is ``clang``, and we need to specify the target as 
+  ``aarch64-linux-musl_purecap`` and the sysroot as ``/root/musl-sysroot-purecap``:
+
+  .. code-block:: shell
+
     $ clang -march=morello \
         --target=aarch64-linux-musl_purecap \
         --sysroot=/root/musl-sysroot-purecap \
         func.c -o func -static
 
-    # or compile it on a Morello system
+
+- If you're using the GCC Docker image, ``cocoaxu/morelloie-gcc``, then we can compile
+  the program with ``gcc`` and we don't need to specify the target or sysroot:
+
+  .. code-block:: shell
+
+    $ gcc -march=morello+c64 -mabi=purecap \
+        -O0 -g func.c -o func
+
+
+- If you're on a Morello system, then you can compile the program with ``clang-morello``;
+  also, you don't need to specify the target or sysroot. However, for old versions of 
+  ``clang-morello`` you need to add the ``-Xclang -morello-vararg=new`` flag to the 
+  compilation command to enable the new vararg ABI for Morello:
+
+  .. code-block:: shell
+
     $ clang-morello -march=morello+c64 -mabi=purecap \
         -Xclang -morello-vararg=new \
         -O0 -g func.c -o func
 
 
-To run the program in the MorelloIE Docker image, we can use ``morelloie`` while on a Morello
-system, we can just run the output binary ``./func``. The output of the program is shown below.
-And in the following sections, we'll only show the output of ``morelloie``, as the output of the
-example program on a Morello system should be the same.
+Of course, if you're on a Morello system, you don't need ``morelloie`` to emulate the CPU. 
+You can simply execute the program as what you'd do on a normal aarch64 Linux system. If 
+you're using either LLVM or GCC Morelloie Docker image, you need to run the program with
+``morelloie``. The output of the program is shown below. (In the following sections, we'll
+only show the output of ``morelloie``, as the output of the example program on a Morello
+system should be the same.)
 
 
 .. code-block:: shell
