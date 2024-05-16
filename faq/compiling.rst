@@ -48,7 +48,7 @@ to purecap binaries like this:
 
 .. code-block:: bash
 
-   clang-morello -march=morello+c64 -mabi=purecap ./file.c
+   clang-morello -march=morello -mabi=purecap ./file.c
 
 You need to specify both the march and mabi flags explicitly for
 purecap mode.
@@ -89,7 +89,7 @@ run the output binary, you'll see the following output:
 
 .. code-block:: bash
 
-   $ clang-morello -march=morello+c64 -mabi=purecap ./varidiac.c
+   $ clang-morello -march=morello -mabi=purecap ./varidiac.c
    $ ./a.out
    In-address space security exception (core dumped)
 
@@ -100,7 +100,7 @@ capability pointers:
 
 .. code-block:: bash
 
-   $ clang-morello -march=morello+c64 -mabi=purecap -Xclang -morello-vararg=new ./varidiac.c
+   $ clang-morello -march=morello -mabi=purecap -Xclang -morello-vararg=new ./varidiac.c
    $ ./a.out
    Total bytes: 24
 
