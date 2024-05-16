@@ -26,6 +26,7 @@ when working with CHERI software?
    running
    shared_library_path
    ldpreload
+   setbounds
    tagcheck
    compile_on_freebsd
    teardown
