@@ -4,7 +4,7 @@
 
 This page deals with *purecap* compilation for native
 capability code. There is a separate page
-for `*hybrid* compilation <compiling_hybrid.html>`.
+for `*hybrid* compilation <https://capabilitiesforcoders.com/faq/compiling_hybrid.html>`.
 
 Cross-compilation
 =================
