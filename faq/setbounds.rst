@@ -10,7 +10,7 @@ macro function, available in the ``<cheriintrin.h>`` header.
 This macro takes a *more permissive* capability (one with
 larger bounds) and a bound (specified in bytes). It
 derives a *more restricted* capability with narrower bounds,
-which is the return value of the `cheri_bounds_set` call.
+which is the return value of the ``cheri_bounds_set`` call.
 
 Note that hardware-checked bounds are a key feature of
 CHERI capabilities.
@@ -22,7 +22,7 @@ capabilities. User code *cannot* set looser bounds, since this
 would break the capability monotonicity property (see below).
 
 Here is some example code, where we have a more permissive pointer
-`p` and a less permissive version `q`, with the same base but
+``p`` and a less permissive version ``q``, with the same base but
 a smaller bound.
 
 .. code-block:: C
