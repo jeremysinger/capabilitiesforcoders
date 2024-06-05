@@ -13,6 +13,7 @@ when working with CHERI software?
    get_a_board
    compiling
    compiling_hybrid
+   benchmark_abi
    configure_networking
    hardware_performance_counters
    header
