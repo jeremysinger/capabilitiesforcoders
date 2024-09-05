@@ -10,6 +10,17 @@ This project is build with [starlight](https://starlight.astro.build/), which is
 
 # Building and deploying
 
+### Prerequisites:
+
+To build this site you will need:
+
+1. an installation of nodejs (version 18, 20 or later). I recommend using [NVM](https://github.com/nvm-sh/nvm) to set this up
+2. a JS package manager. This project has been written with [pnpm](https://pnpm.io/installation), but in principle even npm should work.
+
+To deploy it, you will need to configure a web server such as apache or nginx to serve the static build files.
+
+### Installing capabilities for coders
+
 Astro is a static site generator; It generates static files which can be served with any regular web server. To build this project:
 
 1. clone the repo
