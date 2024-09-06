@@ -14,7 +14,7 @@ If you see a CHERI Clang/LLVM warning message like this:
 then you probably have tried to compile code that looks something like
 this:
 
-```{.C emphasize-lines="5"}
+```c {5}
 #include <stdint.h>
 
 uintptr_t combine(uintptr_t a, uintptr_t b) {
@@ -41,7 +41,7 @@ operation on capability values makes sense. It would be better to
 convert to a simple integer type and do the calculation in that
 (non-capability) domain instead as follows
 
-```{.C emphasize-lines="3"}
+```c {3}
 #include <stdint.h>
 
 uintptr_t combine(uintptr_t a, ptraddr_t b) {
@@ -58,7 +58,7 @@ If you do continue to use capabilities, break the complex calculation
 down into two-address style code with a combined assignment expression,
 for example:
 
-```{.C emphasize-lines="5-6"}
+```c {5-6}
 #include <stdint.h>
 
 uintptr_t combine(uintptr_t a, uintptr_t b) {

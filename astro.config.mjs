@@ -8,6 +8,7 @@ export default defineConfig({
   markdown: {
     rehypePlugins: [[rehypeMermaid, { strategy: "pre-mermaid", dark: true }]],
   },
+  site: "https://capabilitiesforcoders.com",
   integrations: [
     starlight({
       head: [

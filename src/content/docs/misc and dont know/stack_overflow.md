@@ -15,7 +15,7 @@ the stack. This is a common method of exploiting buffer overflows.
 
 For example, consider the following program:
 
-```C
+```c
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

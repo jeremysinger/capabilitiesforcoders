@@ -25,7 +25,7 @@ export LD_64_PRELOAD=/path/to/customlib.so
 
 or for C shell:
 
-```csh
+```sh
 setenv LD_PRELOAD /path/to/customlib.so
 /run/my/binary
 # or for hybrid code ...

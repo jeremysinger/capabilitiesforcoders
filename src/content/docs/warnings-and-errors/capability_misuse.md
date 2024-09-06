@@ -38,7 +38,7 @@ types, or retained as pointers directly.
 
 An example refactoring would be:
 
-```{.C emphasize-lines="3"}
+```c {3}
 #include <stdint.h>
 
 void *foo(uintptr_t value) {
@@ -62,7 +62,7 @@ warning message like this:
 then you probably have tried to compile code that looks something like
 this:
 
-```{.C emphasize-lines="4"}
+```c {4}
 #include <stddef.h>
 #include <stdint.h>
 
@@ -84,7 +84,7 @@ in the source code.
 
 An example refactoring would be:
 
-```{.C emphasize-lines="4"}
+```c {4}
 #include <stddef.h>
 #include <stdint.h>
 
@@ -101,7 +101,7 @@ capability-enabled pointer, you can do an explicit cast using
 
 An example refactoring would be:
 
-```{.C emphasize-lines="4"}
+```c {4}
 #include <stddef.h>
 #include <stdint.h>
 

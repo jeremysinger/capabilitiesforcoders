@@ -21,7 +21,7 @@ export LD_64_LIBRARY_PATH=/path/to/shared/object/files
 
 or for C shell:
 
-```csh
+```sh
 setenv LD_LIBRARY_PATH /path/to/shared/object/files
 # or for hybrid code ...
 setenv LD_64_LIBRARY_PATH /path/to/shared/object/files
