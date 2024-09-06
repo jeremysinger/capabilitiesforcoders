@@ -14,10 +14,10 @@ This project is build with [starlight](https://starlight.astro.build/), which is
 
 To build this site you will need:
 
-1. an installation of nodejs (version 18, 20 or later). I recommend using [NVM](https://github.com/nvm-sh/nvm) to set this up
-2. a JS package manager. This project has been written with [pnpm](https://pnpm.io/installation), but in principle even npm should work.
+1. an installation of nodejs (version 18, 20 or later). I recommend using [NVM](https://github.com/nvm-sh/nvm) to set this up.
+2. a JS package manager. This project has been written with [pnpm](https://pnpm.io/installation).
 
-To deploy it, you will need to configure a web server such as apache or nginx to serve the static build files.
+To deploy it, you will need to configure a web server such as apache or nginx to serve the static build files. By default, these will all be generated in `./build/`
 
 ### Installing capabilities for coders
 
@@ -27,8 +27,8 @@ Astro is a static site generator; It generates static files which can be served 
 2. install the dependencies
 3. build the site
 
-```
-git clone https://github.com/JakeTrevor/capabilities-for-coders-v2.git
+```sh
+git clone https://github.com/jeremysinger/capabilitiesforcoders.git
 cd capabilities-for-coders-v2
 pnpm install
 pnpm build
