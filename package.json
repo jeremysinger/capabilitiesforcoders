@@ -1,0 +1,23 @@
+{
+  "name": "capabilities-for-coders-v2",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.3",
+    "@astrojs/rss": "^4.0.7",
+    "@astrojs/starlight": "^0.26.1",
+    "astro": "^4.10.2",
+    "mermaid": "^11.0.2",
+    "rehype-mermaid": "^2.1.0",
+    "sharp": "^0.32.5",
+    "starlight-links-validator": "^0.10.1",
+    "typescript": "^5.5.4"
+  }
+}
