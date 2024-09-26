@@ -1,0 +1,9 @@
+1. Following the README file, when adapting the build configuration, the file cheribuild.json can be configured at ~/.config/cheribuild.json
+
+2. However, during my build with this file, unhandled exceptions has been issues time and time and prevented a successful build process
+
+3. I had to remove this file from ~/ directory and also from cheribuild cloned directory
+
+4. Removing the same file from both locations, python3 cheribuild.py run-morello-purecap completed successfully
+
+
