@@ -29,5 +29,6 @@ when working with CHERI software?
    ldpreload
    setbounds
    tagcheck
+   get_auxvec
    compile_on_freebsd
    teardown
