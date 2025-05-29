@@ -63,7 +63,7 @@ running natively on CheriBSD, but it doesn't work
 with a cross-compiler.
 
 .. code-block:: C
-   :emphasize-lines: 13
+   :emphasize-lines: 14
 
    #include <stdio.h>
    #include <stdlib.h>
