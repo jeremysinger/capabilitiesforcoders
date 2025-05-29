@@ -21,6 +21,7 @@ when working with CHERI software?
    how_to_tell_morello
    installing_gdb
    printf
+   compare_cap_equality
    purecap_or_hybrid_binary
    purposes_of_sealed_capabilities
    python
