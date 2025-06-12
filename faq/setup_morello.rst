@@ -1,4 +1,5 @@
-Morello CHERIBSD Server Setup
+====================================
+How do I setup a Morello CHERIBSD Server
 ====================================
 
 1. Download and Write Image
