@@ -2,7 +2,7 @@
 How do I setup a Morello CHERIBSD Server
 ====================================
 
-1. Download and Write Image
+How to download and write a CHERIBSD Image to USB
 ---------------------------
 
 First, download Morello CHERI. The current version is available at:
@@ -23,7 +23,7 @@ Then write the disk image to a USB:
 
     dd if=cheribsd-memstick-arm64-aarch64c-25.03.img of=/dev/<USB> bs=1M
 
-2. Install Minicom
+How to install Minicom
 ------------------
 
 Minicom is used to interact with devices connected via serial ports. Install it by running:
@@ -32,7 +32,7 @@ Minicom is used to interact with devices connected via serial ports. Install it 
 
     sudo apt-get install minicom
 
-3. Connect to Serial Consoles
+How to Connect to Serial Consoles
 -----------------------------
 
 "First, connect to the MCC firmware console. The serial device for the firmware on the Morello server is `ttyUSB0`.
@@ -56,7 +56,7 @@ If this happens run the following command in the MCC firmware console:
 
     REBOOT
 
-4. Complete Installation
+Complete Installation
 ------------------------
 
 To finish booting, follow the official guide:
