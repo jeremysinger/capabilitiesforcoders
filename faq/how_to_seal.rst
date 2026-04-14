@@ -157,7 +157,7 @@ unseal the capabilities we pass to these untrusted functions. For example:
   [untrusted func] read as char *: Shh! This is a secret!
 
 
-To address this potential security issue, we can create our own sealer, and seal sensetive
+To address this potential security issue, we can create our own sealer, and seal sensitive
 capabilities with it instead of the OS canonical one. The reason for doing so is that, in
 CHERI, a sealed capability can only be unseal with its original sealer.
 
